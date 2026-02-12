@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  backend:
+    build: .
+    container_name: resume_ranker_backend
+    command: gunicorn -w 1 -b 0.0.0.0:5000 flask_backend:app --timeout 600
+    ports:
+      - "5000:5000"
+    environment:
+      - SECRET_KEY=dev_secret_key
+      - JWT_SECRET_KEY=dev_jwt_secret
+      - FLASK_ENV=production
+    volumes:
+      - ./models:/app/models
+
+  frontend:
+    build: .
+    container_name: resume_ranker_frontend
+    command: streamlit run streamlit_frontend.py --server.port 8501 --server.address 0.0.0.0
+    ports:
+      - "8501:8501"
+    environment:
+      - FLASK_URL=http://backend:5000
+    depends_on:
+      - backend

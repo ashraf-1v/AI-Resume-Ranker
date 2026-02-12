@@ -111,6 +111,19 @@ The Streamlit app will open in your browser at `http://localhost:8501`
 - Username: `admin`
 - Password: `admin123`
 
+## 🐳 Docker Deployment
+
+You can also run the application using Docker.
+
+### 1. Build and Run
+```bash
+docker-compose up --build
+```
+
+### 2. Access the App
+- Frontend: `http://localhost:8501`
+- Backend: `http://localhost:5000`
+
 ## 📖 Usage Guide
 
 ### Step 1: Upload Resumes

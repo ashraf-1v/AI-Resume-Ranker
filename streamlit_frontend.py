@@ -7,11 +7,12 @@
 import streamlit as st
 import requests
 import time
+import os
 
 #  CONFIGURATION & CONSTANTS
 
 # The base URL for the backend Flask API.
-FLASK_URL = "http://localhost:5000"
+FLASK_URL = os.environ.get("FLASK_URL", "http://localhost:5000")
 
 # Configure the Streamlit page. This should be the first Streamlit command.
 st.set_page_config(
